@@ -1,0 +1,17 @@
+<div style="width: 35%;">
+  <div style="display: inline-block; margin-left: 3%;">
+    <mat-form-field appearance="fill">
+      <mat-label>בחירת פרויקט</mat-label>
+      <mat-select id="selectProject" [value]="selected" (selectionChange)="changeSelect($event)">
+        <mat-option *ngFor="let project of revListFilter" [value]="project.nvProjectName">{{project.nvProjectName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div style="display: inline-block;">
+    <mat-form-field>
+      <input matInput (change)="changeSelect(1)" type="number" [(ngModel)]="year">
+    </mat-form-field>
+  </div>
+</div>
+<app-chart [chartData]='reviewsInfo' [chartMetaInfo]='metaInfo'></app-chart>

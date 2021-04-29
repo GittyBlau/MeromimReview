@@ -1,0 +1,6 @@
+<div style="text-align: right;" class="header-projectType">
+    <span *ngIf="!isReview&&id!=0">עריכת תבנית לאופי הפרויקט</span>
+    <span *ngIf="isReview">עריכת ביקורת</span>
+    <span *ngIf="id==0">הגדרת שאלות קבועות</span>
+</div>
+<router-outlet></router-outlet>

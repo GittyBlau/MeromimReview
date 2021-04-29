@@ -1,0 +1,261 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+/* @import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-material.css"; */
+
+.ag-header-cell-text{
+    font-size: 15px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
+}
+body{
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif !important;
+    background-color:whitesmoke;
+}
+.bg-main {
+    /* background-image: url(../assets/bg.png); */
+    height: 700px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    right: 0;
+}
+.header-projectType {
+    margin: -12px 0px 0;
+    padding: 8px 0px;
+    color: #f0712f;
+    font-size: 20px;
+    border-bottom: 2px solid;
+}
+body{
+  font-family: "OpenSansHebrewRegular";
+  /* text-align: right; */
+}
+.on-div-wrap {
+    /* background-color: red; */
+    margin: 0 -20px;
+    padding: 12px 46px;
+}
+
+@keyframes focusAnimation {
+    0% {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    100% {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.NotFocus {
+    animation: NofocusAnimation .5s forwards;
+}
+
+
+@keyframes NofocusAnimation {
+    0% {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.44);
+    }
+
+    100% {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        box-shadow: none;
+    }
+}
+.focusDiv
+{
+    animation: focusAnimation .5s forwards;
+}
+
+.focusDiv .add-btn-form.d-none {
+    
+    display: block !important;
+    animation: fadein_btn .5s forwards;
+    position: absolute;
+    top: 50%;
+    left: -25px;
+    transform: translateY(-50%);
+}
+.btnStyle:focus {
+    outline: none;
+    box-shadow: none;
+   }
+@keyframes fadein_btn {
+    0% {
+        opacity: .4;
+        transform: translateY(-38%);
+    }
+
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+.circle-btn {
+    height: 50px;
+    width: 50px;
+    background-color: #f0712f;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.44);
+}
+.form-control {
+     display: block;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; 
+}
+
+.form-control:focus {
+    border-color: #555555 /*66afe9*/;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.form-control:-moz-placeholder {
+    color: #999999;
+}
+
+.form-control::-moz-placeholder {
+    color: #999999;
+    opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+    color: #999999;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #fff;
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    cursor: not-allowed;
+    background-color: #eeeeee;
+}
+.constant-questions-btn:first-child {
+    margin-top: 4%;
+}
+.constant-questions-btn {
+    border-radius: 30px;
+    padding: 0 18px;
+    width: 180px;
+    border: none;
+    color: #5a5a5a;
+    font-size: 16px;
+    height: 50px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.44);
+    background: transparent;
+    /* margin: 2% 0; */
+}
+
+input, .form-control {
+    border: none;
+    border-bottom: 1px solid #d2d2d2;
+    border-radius: 0;
+    margin-bottom: 20px;
+    box-shadow: none;
+    background-color: transparent;
+}
+.ng-invalid-required {
+    border-color: red !important;
+    border-width: 1px !important;
+    background-color: #FFE898;
+
+}
+.btn-icon {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.btn:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+.btn:hover, .btn:focus {
+    color: #333333;
+    text-decoration: none;
+}
+
+.btn:active, .btn.active {
+    outline: 0;
+    background-image: none;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.btn-default {
+    color: #333333;
+    background-color: #ffffff;
+    border-color: #cccccc;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    color: #333333;
+    background-color: #ebebeb;
+    border-color: #adadad;
+}
+
+.btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    background-image: none;
+}
+
+.btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default[disabled].active, fieldset[disabled] .btn-default.active {
+    background-color: #ffffff;
+    border-color: #cccccc;
+}

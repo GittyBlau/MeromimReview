@@ -1,0 +1,21 @@
+body{
+    direction: rtl;
+}
+.saveButton:disabled{
+    opacity: 30%;
+}
+#gradeDiv{
+    position: absolute;
+     margin-top: 4%; margin-right: -10%;
+    width: 90%;
+    z-index: 10;
+
+}
+#gradeDiv2{
+    z-index: 50;
+    position: absolute;
+    margin-top: 5.5%;
+    margin-right: 71.5%;
+    width: 7%;
+    height: 8%;
+}

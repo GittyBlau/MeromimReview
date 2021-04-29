@@ -1,0 +1,22 @@
+<div style="text-align: right;" class="header-projectType"><span id="header">רשימת ביקורות</span></div>
+<button id="addRevBtn" class="circle-btn btnStyle" (click)="addProjectReview()"
+style="cursor: pointer; position: absolute; margin-top: -80px; margin-right: -25%;" title="הוספת ביקורת">
+➕
+</button>
+<div class="grid-wrapper">
+	<ag-grid-angular  *ngIf="rowData.length>0"
+	style=" width: 1186px; height: 800px;" 
+	class="ag-theme-balham"
+	[rowData]="rowData" 
+	(gridReady)="onGridReady($event)"
+	(columnResized)="onColumnResized($event)"
+	[gridOptions]="gridOptions"
+	[columnDefs]="columnDefs"
+    enableFilter
+	enableSorting
+	[enableColResize]=true
+	rowHeight="40"
+	animateRows
+	pagination
+	>
+</ag-grid-angular>

@@ -1,0 +1,108 @@
+.menu-item-div {
+	margin: auto;
+	border: 1px solid #F37A5B;
+	width: 147px;
+	height: 123px;
+	text-align: center;
+	font-size: 20px;
+	color: #F37A5B;
+	margin-bottom: 20px;
+	border-radius: 4px;
+	padding-top: 18px;
+}
+.active, .menu-item-div:hover {
+	border: 1px solid #f0712f !important;
+	background-color: #f0712f;
+	color: white;
+	cursor: pointer;
+}
+
+.main-content {
+    /*margin: auto;*/
+    background-color: white;
+    width: 82%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+    padding: 24px 30px 0;
+    position: absolute;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    margin-right: 225px; 
+     margin-top: 3%;
+     /*z-index: 4;
+     position: absolute; 
+     width: 82%; 
+      
+    padding: 0%;  */
+     /* min-height: 87%;  */
+}
+
+.logo{
+    
+    margin-bottom: 40px;
+    padding-top: 32px;
+}
+.icon-in-menu:before {
+    font-size: 36px;
+    margin-left: 0;
+}
+.row1{
+    display: flex;
+}
+.col1{
+    flex: 1;
+}
+
+#menu-temp {
+    /*display: block;*/
+    width: 192px;
+    background-color: #F7F7F7;
+    box-shadow: -1px 0px 9px /*rgba(0, 0, 0, 0.2)*/;
+    height: 100vh;
+    text-align: center;
+}
+
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 26/06/2018 07:09
+  	*/
+
+      @font-face {
+        font-family: "Flaticon";
+        src: url("../Fonts/Flaticon.eot");
+        src: url("../Fonts/Flaticon.eot") format("embedded-opentype"), url("../Fonts/Flaticon.woff") format("woff"), url("../Fonts/Flaticon.ttf") format("truetype"), url("../Fonts/Flaticon.svg") format("svg");
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+        @font-face {
+            font-family: "Flaticon";
+            src: url("../Fonts/Flaticon.svg") format("svg");
+        }
+    }
+    .header-user-div {
+        text-align: left;
+        width: 94%;
+        margin: 0 auto;
+        padding-left: 32px;
+    }
+    
+    [class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+        font-family: Flaticon;
+        /* font-size: 20px; */
+        font-style: normal;
+        /* margin-left: 20px; */
+    }
+
+    .flaticon-excel:before { content: "\f100"; }
+    .flaticon-send:before { content: "\f101"; }
+    .flaticon-cross-out:before { content: "\f102"; }
+    .flaticon-to-do:before { content: "\f103"; }
+    .flaticon-delete:before { content: "\f104"; }
+    .flaticon-checklist:before { content: "\f105"; }
+    .flaticon-visibility:before { content: "\f106"; }
+    .flaticon-save:before { content: "\f107"; }
+    .flaticon-pen:before { content: "\f108"; }
+    .flaticon-add:before { content: "\f109"; }
+    .flaticon-link:before { content: "\f10a"; }

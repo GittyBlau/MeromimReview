@@ -1,0 +1,22 @@
+body{
+    text-align: right;
+}
+.divActiv{
+    background-color: #f0712f;
+}
+#saveButton:disabled{
+opacity: 30%;
+}
+
+.mb-2:hover {
+    background: #fae0d2 ;
+ 
+ }
+
+ .percent-invalid{
+     color: red;
+ }
+ .americann
+ {
+     margin-right: 55%;
+ }

@@ -1,0 +1,142 @@
+<form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+    <button id="saveButton" class="circle-btn btnStyle"
+        style="cursor: pointer; position: absolute; margin-top: -80px; margin-right: -25%;"
+        [disabled]="disabledSave||this.dynamicForm.invalid||(percentsSum!=100 &&isReview)"
+        title="השמירה מתאפשרת רק באם השדות מלאים">
+        📋
+    </button>
+    <div class="card-body" id="headFormGroup" (click)="firstDivClick()">
+        <div *ngIf="isReview" style="text-align:right">
+            <div class="form-group" style="display: inline-block;">
+                <label>בחר פרויקט</label>
+                <select class="form-control" id="selectedProject">
+                    
+                    <option *ngFor="let p of allProject" [value]="p.Value">{{p.Value}}</option>
+                </select>
+            </div>
+            <br>
+            <br>
+            <input type="button" title="" value="רענן חלוקת אחוזים" style="cursor: pointer"
+                class="constant-questions-btn mb-2" (click)="updatePercentAvg()">
+            <span style="margin-right: 3%;"> ציון מקסימום לפרויקט:</span>
+            <span [ngClass]="{ 'percent-invalid':( percentsSum < 100||percentsSum > 100)}" name="percent">
+                {{percentsSum}}%</span>
+        </div>
+        <div *ngIf="!isReview&&id!=0&&id!=null">
+            <div class="form-group" style="text-align: right;">
+                <label style="display: inline-block; width: 20%;">אופי הפרוייקט</label>
+                <input style="display: inline-block; width: 40%;" type="text" formControlName="projectTypeName"
+                    class="form-control" value="f.projectTypeName.value"
+                    [ngClass]="{ 'is-invalid':(submitted||f.projectTypeName.touched)  && f.projectTypeName.errors }">
+                <div *ngIf="(submitted||f.projectTypeName.touched) && f.projectTypeName.errors"
+                    class="invalid-feedback">
+                    <div *ngIf="f.projectTypeName.errors.required">חובה לכתוב את אופי הפרויקט</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="this.currentType!=undefined" class="ng-scope">
+        <div *ngFor="let question of t.controls; let i = index" class="list-group list-group-flush">
+            <div class="list-group-item" id="question{{i}}" (click)="divClicked(i)">
+                <div [formGroup]="question" style="text-align: right;width: 100%;">
+                    <div class="form-group col-md-4" style="display: inline-block;">
+                        <input placeholder="* הזן שאלה" style="border: none;border-bottom: solid orangered thin;"
+                            value="{{question.controls.questionContent.value}}" type="text"
+                            formControlName="questionContent"
+                            class="form-controlw-100 form-control question-input ng-pristine ng-valid ng-not-empty ng-touched ng-valid-required"
+                            [ngClass]="{ 'is-invalid': (submitted|| question.controls.questionContent.touched) && question.controls.questionContent.errors }" />
+                        <div *ngIf="(submitted ||question.controls.questionContent.touched)&&question.controls.questionContent.errors "
+                            class="invalid-feedback">
+                            <div
+                                *ngIf="question.controls.questionContent.errors&&question.controls.questionContent.errors.required">
+                                שדה חובה *</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4" style="display: inline-block;">
+                        <select (change)="changeSelect($event,i)" type="text" formControlName="typeOfQuestion"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && question.controls.typeOfQuestion.errors }">
+                            <option id="opQuest{{i}}" [value]="question.controls.typeOfQuestion.value">
+                                {{question.controls.typeOfQuestion.value}}</option>
+                            <option *ngFor="let j of this.questionTypes" [value]="j.Value">{{j.Value}}</option>
+                        </select>
+                        <div *ngIf="(submitted ||question.controls.typeOfQuestion.touched)&& question.controls.typeOfQuestion.errors"
+                            class="invalid-feedback">
+                            <div *ngIf="question.controls.typeOfQuestion.errors.required">שדה חובה *</div>
+                            <div *ngIf="question.controls.typeOfQuestion.errors.typeOfQuestion">חייב ליהיות חוקי
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- שאלה מסוג 'אמריקאי' או 'כן לא' אמורים ליהיות עם אחוזים בביקורת -->
+                    <div style="text-align: right;"
+                        *ngIf="isReview&&(ansInputTypes[i]=='אמריקאי'||this.currentType.lQuestion[i].iQuestionsType==1180) ">
+                        <label style="cursor: pointer; margin: 8px; text-align: left;">
+                            <input [checked]="this.currentType.lQuestion[i].bIncludeGrade" id="shareInPercentage{{i}}"
+                                (input)="ChangedSharing(i)" name="shareInPercentage" type="checkbox">שתף בחלוקת
+                            האחוזים?</label>
+                        <label>מספר אחוזים:</label>
+                        <input *ngIf="lShareChecked[i]" name="iNumPercent" id="iNumPercent{{i}}" type="number" min="0"
+                            max="100" (mousedown)="updatePercent($event)" [value]="currentType.lQuestion[i].iNumPercent"
+                            (blur)="touchedPercent($event,i)">
+                        <input *ngIf="!lShareChecked[i]" name="iNumPercent" id="iNumPercent{{i}}" type="number" min="0"
+                            [value]="0" disabled>
+                    </div>
+                    <div style="text-align: right;" *ngIf="ansInputTypes[i]=='אמריקאי'||ansInputTypes[i]=='בחירה מרובה'">
+                        <div id="answersDiv{{i}}"
+                            *ngFor="let answer of currentType.lQuestion[i].lAnswer; let answerIndex=index">
+                            {{answerIndex+1}}.
+                            <input required type="text" value="{{answer.nvAnswersContent}}" name="answersContent"
+                                (blur)="checkValidation()">
+                            <button *ngIf="arr[i]==true" (click)="deleteAnswer(answer.iRevAnswerId,answerIndex,i)"
+                                type="button" class="btn-icon btnStyle">✖</button>
+                            <br>
+                        </div>
+                        <button *ngIf="arr[i]==true" (click)="addAnswer(i)" type="button"
+                            class="btn-icon btnStyle">➕</button>
+                        <div *ngIf="ansInputTypes[i]=='אמריקאי'">
+                            <b class="ml-3">התשובה הנכונה:</b>
+                            <label id="labelAns{{currentType.lQuestion[i].iRevQuestionId}}_{{answerIndex}}"
+                                *ngFor="let answer of currentType.lQuestion[i].lAnswer; let answerIndex=index"
+                                class="btn  active form-check-label">
+                                <input class="form-check-input" style="margin:10px;" type="radio"
+                                    (click)="updateCorrectAnswer(answer.iRevAnswerId,i)"
+                                    [checked]="(currentType.lQuestion[i].iCorrectAnswer!=null&&currentType.lQuestion[i].lAnswer[answerIndex].iRevAnswerId==currentType.lQuestion[i].iCorrectAnswer)||answerIndex==0&&currentType.lQuestion[i].iCorrectAnswer==null"
+                                    autocomplete="off" name="question{{currentType.lQuestion[i].iRevQuestionId}}"
+                                    value="{{answer.iRevAnswerId}}">
+                                {{answerIndex+1}}
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div style="    margin-top: 1.5%; " *ngIf="this.currentType.lQuestion[i].iQuestionsType==1180">
+                        <b class="ml-3">התשובה הנכונה:</b>
+                        <label style=" margin-left: 10px;" class="btn  active form-check-label">
+                            <input class="form-check-input" style="margin:10px;" value="1" type="radio"
+                                [checked]="(currentType.lQuestion[i].iCorrectAnswer==null||currentType.lQuestion[i].iCorrectAnswer)"
+                                name="question{{this.currentType.lQuestion[i].iRevQuestionId}}" autocomplete="off">
+                            כן
+                        </label>
+                        <label class="btn  active form-check-label">
+                            <input class="form-check-input" style="margin:10px;" value="0" type="radio"
+                                [checked]="!currentType.lQuestion[i].iCorrectAnswer"
+                                name="question{{this.currentType.lQuestion[i].iRevQuestionId}}">
+                            לא
+                        </label>
+                    </div>
+                    <div style="    margin-right: 85%;">
+                        <label style="margin: 8px;"><input [checked]="currentType.lQuestion[i].bRequired"
+                                name="bRequired" type="checkbox">שאלת חובה?</label>
+                        <button type="button" class="btn-icon  mr-3 btnStyle" title="מחק שאלה"
+                            (click)="deleteQuestion(i)">
+                            <img width="23px" src="../../../assets/delete.jpg"></button>
+                    </div>
+                    <button type="button" *ngIf="this.arr!=undefined&&this.arr[i]" style="cursor: pointer;"
+                        class="circle-btn add-btn-form d-none btnStyle" title="הוספת שאלה" (click)="addQuestion(i)">
+                        <span class="flaticon-add">➕</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

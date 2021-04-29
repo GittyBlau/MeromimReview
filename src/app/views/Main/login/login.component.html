@@ -1,0 +1,22 @@
+<div class="login main-content-login main-content" >
+    
+    <!-- <wait></wait> -->
+    <div class="mb-5 mt-5">
+        <img class="mb-3 mt-3" src="../../../../assets/logo.png" />
+    </div>
+    <form id="myForm" name="myForm">
+      
+
+        <input  type="text" class="ng-invalid-required form-control w-100" id="userName" name="userName" placeholder="שם משתמש"
+        [(ngModel)]= "userName"
+               required />
+               <!--<mat-placeholder class="placeholder">שם משתמש</mat-placeholder>-->
+
+        <input [(ngModel)]="password" type="password" class="ng-invalid-required form-control w-100"
+         id="password" name="password" placeholder="סיסמא" required />
+
+
+        <button (click)="Login()" style="cursor: pointer;" class="login-btn mt-4" title="כניסה">כניסה</button>
+    </form>
+    
+</div>

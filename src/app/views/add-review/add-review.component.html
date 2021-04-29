@@ -1,0 +1,19 @@
+<p class="modal-header" style="text-align: left;">הוספת ביקורת חדשה</p>
+<div style="text-align: right;     padding-right: 4%;" id="all">
+    <form name="myForm">
+        <br>
+        <select style="height: 35px;" name="nvRevProjectType">
+            <option *ngFor="let projectRev of projectRevList">
+                {{projectRev.nvRevProjectType}}
+            </option>
+        </select>
+        <br /><br />
+        תאריך הביקורת:
+        <input type="date" class="col-md-7 form-control" name="dRevDate" />
+        <br /><br /><br />
+        <button style="margin-top: 1%!important; margin-right: 83%; cursor: pointer;" (click)="addProjectReview()" title="אישור"
+            class="orange-btn-line float-right mt-4">
+            <span>אישור</span>
+        </button>
+    </form>
+</div>

@@ -1,0 +1,28 @@
+<div class="row1">
+    <div id="menu-temp" class="row1" style="display: inline-block; position: fixed;">
+        <div class="logo col" style="text-align: center;">
+            <img src="../../../assets/logo.png" width="80%" class="logo-login">
+        </div>
+        <div id="ProjectReview" (click)="picColor= f=false" style="margin: 0px 22.5px 20px 22.5px;"
+        class="icon-in-menu flaticon-to-do nav-btn  menu-item-div:hover      menu-item-div "
+        [routerLink]="'ProjectReview'" [routerLinkActive]="['active']"><br>ביקורות </div>
+        <div id="Result" (click)="picColor= f=false" style="margin: 0px 22.5px 20px 22.5px;"
+        class="icon-in-menu flaticon-checklist  menu-item-div:hover nav-btn  menu-item-div " [routerLink]="'Result'"
+        [routerLinkActive]="['active']"><br>תוצאות </div>
+        <div id="ProjectType" (click)="picColor= f=false" style="margin: 0px 22.5px 20px 22.5px;"
+        class="icon-in-menu flaticon-to-do  nav-btn menu-item-div:hover      menu-item-div"
+        [routerLink]="'ProjectType'" [routerLinkActive]="['active']"><br>תבניות אופי</div>
+        <div id="RevChart" (click)="picColor=true;f=true" (mouseenter)="picColor=true" (mouseleave)="picColor=f" style="margin: 0px 22.5px 20px 22.5px;"
+        class="icon-in-menu   nav-btn menu-item-div:hover   menu-item-div"
+        [routerLink]="'RevChart'" [routerLinkActive]="['active']">
+        <img  *ngIf="!picColor" style="z-index: 5;" src="../../../assets/diagram.png" width="50">
+        <img   *ngIf="picColor" style="z-index: 5;" src="../../../assets/diagram2.png" width="50">
+        <br>צפייה בדיאגרמות </div>
+    </div>
+    <div style="display: inline-block;" name="routerOutlet" class="main-content">
+        <router-outlet></router-outlet>
+    </div>
+    <div style="display: inline-block; margin-right: 78%;
+    margin-top: 1%;">שלום {{getNvUserName}} | <span [routerLink]="'/'"
+        style="cursor: pointer;">התנתק</span></div>
+</div>

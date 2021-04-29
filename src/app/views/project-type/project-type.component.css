@@ -1,0 +1,14 @@
+.eDivClass{
+    background-color: blue;
+      width:150px;
+    }
+    .mb-2, .my-2 {
+      margin-bottom: .5rem!important;
+      margin-top: .5rem!important;
+
+  } 
+   .mb-2:hover, .my-2:hover {
+   background: #fae0d2 ;
+
+}
+  

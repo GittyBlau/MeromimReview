@@ -1,0 +1,124 @@
+<div style="text-align: right;" class="header-projectType"><span
+        *ngIf="projectReview">{{projectReview.nvRevProjectType}} |
+        {{projectReview.nvProjectName}}</span></div>
+<!-- אופי הפרויקט בגדול ושם הפרויקט בקטן-בכותרת -->
+<form [formGroup]="dynamicForm">
+    <button *ngIf="!isResult" class="circle-btn btnStylev saveButton" (click)="onSubmit(true)"
+        style="cursor: pointer; position: absolute; margin-top: -80px; margin-right: -25%;"
+        [disabled]="dynamicForm.invalid" title="השמירה מתאפשרת רק באם השדות מלאים">
+        📋
+    </button>
+    <div *ngIf="isResult" id="gradeDiv">
+        <img style="opacity: 50%;" width="9%" src="../../../assets/percentage.png">
+    </div>
+    <div *ngIf="isResult" id="gradeDiv2">
+        <h1  style="font-weight: bold; font-size: 4vw; color: gray;">{{grade}}</h1>
+    </div>
+    <div class="card-body">
+        <div style="text-align: right;">
+            <div style="cursor: not-allowed; display: inline-block; margin-left: 3%;">
+                <mat-form-field appearance="fill">
+                    <mat-label>תאריך הביקורת:</mat-label>
+                    <input [readonly]="true" matInput formControlName="dRevDate" [matDatepicker]="dp" disabled>
+                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                    <mat-datepicker #dp disabled></mat-datepicker>
+                </mat-form-field>
+                <div *ngIf="(submitted||f.dRevDate.touched) && f.dRevDate.errors&&!isResult" class="invalid-feedback">
+                    <div *ngIf="f.dRevDate.errors.required">חובה לכתוב את התאריך</div>
+                </div>
+            </div>
+            <div style="cursor: not-allowed; display: inline-block;">
+                <mat-form-field appearance="fill">
+                    <mat-label>:שעת ביקורת</mat-label>
+                    <input style="width: 82%" matInput type="time" formControlName="reviewTime" class="timepicker"
+                        [readonly]="true"
+                        [ngClass]="{'is-invalid':(submitted||f.reviewTime.touched) &&!isResult && f.reviewTime.errors }">
+                    <img width="23" style="opacity: 30%;" src="../../../assets/clock.png">
+                </mat-form-field>
+                <div *ngIf="(submitted||f.reviewTime.touched) && f.reviewTime.errors&&!isResult"
+                    class="invalid-feedback">
+                    <div *ngIf="f.reviewTime.errors.required">חובה לכתוב את השעה</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="this.projectReview" class="ng-scope">
+        <div *ngFor="let question of t.controls; let i = index" class="list-group list-group-flush">
+            <div class="list-group-item" id="question{{i}}">
+                <div [formGroup]="question" style="text-align: right;">
+                    <label>{{projectReview.lQuestion[i].nvQuestionsContent}}</label>
+                    <br>
+                    <div *ngIf="ansInputTypes[i]=='טקסט חופשי קצר'||ansInputTypes[i]=='טקסט חופשי ארוך'"
+                        class="form-group col-12" style="display: inline;">
+                        <input placeholder="* הזן תשובה" style="border: none;border-bottom: solid orangered thin;"
+                            value="{{question.controls.questionContent.value}}" type="text"
+                            formControlName="questionContent"
+                            class="form-controlw-100 form-control question-input ng-pristine ng-valid ng-not-empty ng-touched ng-valid-required"
+                            [ngClass]="{ 'is-invalid': (submitted|| question.controls.questionContent.touched) && question.controls.questionContent.errors }" />
+                        <div *ngIf="(submitted ||question.controls.questionContent.touched)&&question.controls.questionContent.errors "
+                            class="invalid-feedback">
+                            <div
+                                *ngIf="question.controls.questionContent.errors&&question.controls.questionContent.errors.required">
+                                שדה חובה*</div>
+                        </div>
+                    </div>
+                    <div *ngIf="ansInputTypes[i]=='כמות'" class="form-group col-12" style="display: inline;">
+                        <input placeholder="* הזן תשובה" style="border: none; border-bottom: solid orangered thin;"
+                            value="{{question.controls.questionContent.value}}" type="number" min="0"
+                            formControlName="questionContent"
+                            class="form-controlw-100 form-control question-input ng-pristine ng-valid ng-not-empty ng-touched ng-valid-required"
+                            [ngClass]="{ 'is-invalid': (submitted|| question.controls.questionContent.touched) && question.controls.questionContent.errors }" />
+                        <div *ngIf="(submitted ||question.controls.questionContent.touched)&&question.controls.questionContent.errors "
+                            class="invalid-feedback">
+                            <div
+                                *ngIf="question.controls.questionContent.errors&&question.controls.questionContent.errors.required">
+                                שדה חובה *</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;" *ngIf="ansInputTypes[i]=='בחירה מרובה'">
+                        <div id="answersDiv{{i}}"
+                            *ngFor="let answer of projectReview.lQuestion[i].lAnswer; let answerIndex=index">
+                            <input name="answerSelect{{i}}" [disabled]="isResult" type="checkbox" required
+                                value="{{answer.nvAnswersContent}}"
+                                [checked]="(projectReview.lQuestion[i].lAnswer[answerIndex].isSelected)">
+                            {{answer.nvAnswersContent}}
+                            <br>
+                        </div>
+                    </div>
+                    <div style="text-align: right;" *ngIf="ansInputTypes[i]=='אמריקאי'">
+                        <div id="answersDiv{{i}}"
+                            *ngFor="let answer of projectReview.lQuestion[i].lAnswer; let answerIndex=index">
+                            <input [disabled]="isResult" type="radio" required value="{{answer.nvAnswersContent}}"
+                                formControlName="questionContent"
+                                [checked]="(projectReview.lQuestion[i].lAnswer[answerIndex].iRevAnswerId==projectReview.lQuestion[i].lProjectAnswer[0].iRevAnswerId)">
+                            {{answer.nvAnswersContent}}
+                            <br>
+                        </div>
+                    </div>
+                    <div style="text-align: right;" *ngIf="this.projectReview.lQuestion[i].iQuestionsType==1180">
+                        <div id="answersDiv{{i}}" name="answersContent">
+                            <input [disabled]="isResult" type="radio" required
+                                name="question{{this.projectReview.lQuestion[i].iRevQuestionId}}" value="1"
+                                [checked]="(projectReview.lQuestion[i].lProjectAnswer[0].nvAnswerContent=='1')">
+                            כן
+                            <br>
+                            <input [disabled]="isResult" type="radio" required
+                                name="question{{this.projectReview.lQuestion[i].iRevQuestionId}}" value="0"
+                                [checked]="(projectReview.lQuestion[i].lProjectAnswer[0].nvAnswerContent=='0')">
+                            לא
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button *ngIf="!isResult" class="saveButton" 
+    style="cursor: pointer; cursor: pointer;
+    color: #F37A5B;
+    border-color: #F37A5B;
+    border-width: 0.2vw;
+    width: 12%;
+    font-size: 1.5vw;
+    font-family: system-ui;" [disabled]="dynamicForm.invalid" title="השמירה מתאפשרת רק באם השדות מלאים" (click)="onSubmit(false)">סיום ביקורת</button>
+</form>

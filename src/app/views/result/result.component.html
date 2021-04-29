@@ -1,0 +1,20 @@
+<div  style="text-align: right;"  class="header-projectType"><span id="header">תוצאות</span></div>
+<div >
+<ag-grid-angular *ngIf="rowData.length>0"
+	style="width: 1186px; height: 800px;" 
+	class="ag-theme-balham"
+	[rowData]="rowData" 
+	[gridOptions]="gridOptions"
+	[columnDefs]="columnDefs"
+	[suppressRowTransform]="true"
+	(gridReady)="onGridReady($event)"
+	(columnResized)="onColumnResized($event)"
+	[enableColResize]=true
+    enableFilter
+    enableSorting
+	rowHeight="40"
+	animateRows
+	pagination
+	>
+</ag-grid-angular>
+</div>

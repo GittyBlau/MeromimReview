@@ -1,0 +1,29 @@
+<div style="text-align: right; display: block;" class="header-projectType"><span >תבניות אופי</span></div>
+	<button id="addRevBtn" class="circle-btn btnStyle" (click)="addProjectType()"
+style="cursor: pointer; position: absolute; margin-top: -80px; margin-right: -25%;" title="הוספת תבנית אופי">
+➕
+</button>
+<div class="row">
+
+<div>
+	<ag-grid-angular  *ngIf="rowData.length!=0"
+	style="width: 800px; height: 600px;" 
+	class="col-md-11 ag-theme-balham ag-theme-alpine"
+	[rowData]="rowData" 
+	[gridOptions]="gridOptions"
+	[columnDefs]="columnDefs"
+	rowHeight="40"
+	enableFilter
+	enableSorting
+	[enableColResize]=true
+	(gridReady)="onGridReady($event)"
+	(columnResized)="onColumnResized($event)"
+	pagination>
+</ag-grid-angular>
+</div>
+<div class="col-md-1"></div>
+<div style="margin-right:80%; margin-top: -48%;" class=" col-md-1 d-flex flex-column">
+	<input type="button" title="הגדרת שאלות קבועות" value="הגדרת שאלות קבועות" style="cursor: pointer" class="constant-questions-btn mb-2" (click)="defFixedQuestion()"> 
+</div>
+</div>
+<div id="feedBack"></div>
