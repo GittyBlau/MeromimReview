@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
 
 import {
-
   MatButtonModule,
   MatMenuModule,
   MatToolbarModule,
@@ -22,16 +21,12 @@ import {
   MatGridListModule,
   MatSlideToggleModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MatTableModule
 } from '@angular/material';
-import { MyRoutingModule } from './Route/my-routing.module';
-//import {AppProxy} from './services/app.proxy';
-//import {AgGridModule} from 'ag-grid-angular';
-//import {AppServiceService}  from './services/app-service.service';
+import { MyRoutingModule } from './route/my-routing.module';
 import { RouterModule } from '@angular/router';
-// import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './views/Main/login/login.component';
+import { LoginComponent } from './views/main/login/login.component';
 import { NavigateComponent } from './views/navigate/navigate.component';
 import { ProjectReviewComponent } from './views/project-review/project-review.component';
 import { ResultComponent } from './views/result/result.component';
@@ -42,14 +37,13 @@ import { QuestionsDetailsComponent } from './views/questions-details/questions-d
 import { EditProjectComponent } from './views/edit-project/edit-project.component';
 import { CopyProjectDialogComponent } from './views/copy-project-dialog/copy-project-dialog.component';
 import { ShowReviewsComponent } from './views/show-reviews/show-reviews.component';
-import { DateParsePipe } from './Pipes/date-parse.pipe';
+import { DateParsePipe } from './pipes/date-parse.pipe';
 import { DatePipe } from '@angular/common';
 import { AddReviewComponent } from './views/add-review/add-review.component';
 import { ChartComponent } from './views/chart/chart/chart.component';
 import { RevChartComponent } from './views/chart/rev-chart/rev-chart.component';
 import { EndReviewComponent } from './views/end-review/end-review.component';
-//import { AppProxyService } from './services/app-proxy.service'
-
+import { LOCALE_TEXT } from 'src/app/addition/constant';
 @NgModule({
   declarations: [
     AppComponent,

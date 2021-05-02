@@ -7,12 +7,12 @@ import { ProjectReview } from 'src/app/models/projectReview.model';
 import { AppServiceService } from 'src/app/services/app-service.service';
 import { AppProxyService } from 'src/app/services/app-proxy.service';
 import { Router } from '@angular/router';
-import { LOCALE_TEXT } from 'src/app/addision/constant';
+import { LOCALE_TEXT } from 'src/app/addition/constant';
 import { from } from 'rxjs';
 import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
 import { CopyProjectDialogComponent } from '../copy-project-dialog/copy-project-dialog.component';
 import { DatePipe } from '@angular/common';
-import { DateParsePipe } from 'src/app/Pipes/date-parse.pipe';
+import { DateParsePipe } from 'src/app/pipes/date-parse.pipe';
 import { AddReviewComponent } from '../add-review/add-review.component';
 
 @Component({

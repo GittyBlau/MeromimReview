@@ -2,9 +2,9 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LOCALE_TEXT } from 'src/app/addision/constant';
+import { LOCALE_TEXT } from 'src/app/addition/constant';
 import { ProjectReview } from 'src/app/models/projectReview.model';
-import { DateParsePipe } from 'src/app/Pipes/date-parse.pipe';
+import { DateParsePipe } from 'src/app/pipes/date-parse.pipe';
 import { AppProxyService } from 'src/app/services/app-proxy.service';
 import { AppServiceService } from 'src/app/services/app-service.service';
 
@@ -28,9 +28,6 @@ export class ResultComponent implements OnInit {
     this.service = service;
     this.dialog = dialog;
     this.dateParse = dateParse;
-    // if (!this.service.currentUser) {
-    //   this.router.navigate(['']);
-    // }
   }
   public gridOptions;
   ngOnInit() {

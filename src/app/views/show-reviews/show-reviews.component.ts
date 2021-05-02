@@ -6,7 +6,7 @@ import { AppProxyService } from 'src/app/services/app-proxy.service';
 import { AppServiceService } from 'src/app/services/app-service.service';
 import { FormControl } from '@angular/forms';
 import { DatePipe, JsonPipe } from '@angular/common';
-import { DateParsePipe } from 'src/app/Pipes/date-parse.pipe';
+import { DateParsePipe } from 'src/app/pipes/date-parse.pipe';
 import { EndReviewComponent } from '../end-review/end-review.component';
 
 @Component({

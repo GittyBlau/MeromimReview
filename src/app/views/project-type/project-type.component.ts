@@ -4,7 +4,7 @@ import { AppProxyService } from 'src/app/services/app-proxy.service';
 import { AppServiceService } from 'src/app/services/app-service.service';
 import { ProjectType } from 'src/app/models/projectType.model';
 import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
-import { LOCALE_TEXT } from 'src/app/addision/constant';
+import { LOCALE_TEXT } from 'src/app/addition/constant';
 import { Router } from '@angular/router';
 import { AbsoluteSourceSpan } from '@angular/compiler';
 

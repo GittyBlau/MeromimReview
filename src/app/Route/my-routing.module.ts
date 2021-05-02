@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 //מודולים אלו מטפלים בניווט
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from '../views/Main/login/login.component';
+import { LoginComponent } from '../views/main/login/login.component';
 import { NavigateComponent } from '../views/navigate/navigate.component';
 import { ProjectReviewComponent } from '../views/project-review/project-review.component';
 import { ProjectTypeComponent } from '../views/project-type/project-type.component';

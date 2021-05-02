@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectReview } from 'src/app/models/projectReview.model';
-import { DateParsePipe } from 'src/app/Pipes/date-parse.pipe';
+import { DateParsePipe } from 'src/app/pipes/date-parse.pipe';
 import { AppProxyService } from 'src/app/services/app-proxy.service';
 import { AppServiceService } from 'src/app/services/app-service.service';
 import { ChartComponent } from '../chart/chart.component';
